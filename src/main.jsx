@@ -19,7 +19,10 @@ import {
 } from '@tanstack/react-query'
 const queryClient = new QueryClient()
 const rootRoute = createRootRoute({
-  basepath:'/rickandmorty/',
+  RootRouteOptions: {
+basepath:'http://localhost:5173/rickandmorty/',
+  },
+  
   component: () => (
     <>
       <Outlet />
@@ -51,7 +54,7 @@ const NotFoundRoute = createRoute({
   path: '/*',
   component: function DetailsRoute() {
     return (<>         <Link to="/" className="[&.active]:font-bold">
-      Not FOund ANything
+      Page Not Found
     </Link>{' '}<Details /></>)
   },
 })
@@ -59,7 +62,7 @@ const NotFoundRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([indexRoute, detailsRoute,NotFoundRoute])
 
-const router = createRouter({ routeTree })
+const router = createRouter({ routeTree,basepath: "/rickandmorty/" })
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
