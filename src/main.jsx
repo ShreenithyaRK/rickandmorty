@@ -45,7 +45,16 @@ const detailsRoute = createRoute({
     </Link>{' '}<Details /></>)
   },
 })
-const routeTree = rootRoute.addChildren([indexRoute, detailsRoute])
+const NotFoundRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/*',
+  component: function DetailsRoute() {
+    return (<>         <Link to="/" className="[&.active]:font-bold">
+      Not FOund ANything
+    </Link>{' '}<Details /></>)
+  },
+})
+const routeTree = rootRoute.addChildren([indexRoute, detailsRoute,NotFoundRoute])
 
 const router = createRouter({ routeTree })
 createRoot(document.getElementById('root')).render(
