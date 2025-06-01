@@ -51,7 +51,7 @@ const router = createRouter({ routeTree })
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} basename={"/rickandmorty/"}/>
     </QueryClientProvider>
   </StrictMode>,
 )
