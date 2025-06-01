@@ -19,6 +19,7 @@ import {
 } from '@tanstack/react-query'
 const queryClient = new QueryClient()
 const rootRoute = createRootRoute({
+  basepath:'/rickandmorty/',
   component: () => (
     <>
       <Outlet />
@@ -54,6 +55,8 @@ const NotFoundRoute = createRoute({
     </Link>{' '}<Details /></>)
   },
 })
+
+
 const routeTree = rootRoute.addChildren([indexRoute, detailsRoute,NotFoundRoute])
 
 const router = createRouter({ routeTree })
